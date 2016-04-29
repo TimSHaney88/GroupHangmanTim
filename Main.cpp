@@ -1,6 +1,6 @@
 
 #include "Dictionary.h"
-// #include "Player.h"
+#include "Player.h"
 // #include "Game.h"
 
 using namespace std;
