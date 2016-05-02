@@ -66,6 +66,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Dictionary.h" />
+    <ClInclude Include="..\..\Game.h" />
     <ClInclude Include="..\..\Player.h" />
   </ItemGroup>
   <ItemGroup>
