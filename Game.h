@@ -14,13 +14,14 @@ class Game
 {
 private:
 	int totalWrongGuesses;
-	Player player;
-	Dictionary Dictionary;
-
+	Player player();
+	Dictionary dictionary();
+	char *word;
 
 public :
 	Game(int totalWrongGuesses); //constructor 
-
-
+	void Play(Player player, Dictionary dictionary, int totalWrongGuesses, char *word);
+	void winOrLoss(Player player, int totalWrongGuesses, char *word, Dictionary dictionary);
+	void resetGame(char *word);
 };
 #endif
