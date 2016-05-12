@@ -1,5 +1,5 @@
 #ifndef DICTIONARY_H
-#define DICTIONARY_H
+#define  DICTIONARY_H
 
 #include <fstream>
 #include <iostream>
@@ -13,7 +13,7 @@ private:
 	//number of words in the document
 	int wordCount;
 	//keep all of the words from the file into the array
-	string wordArray[100];
+	string wordArray[500];
 
 public:
 	//word chosen for the game
@@ -25,11 +25,6 @@ public:
 	//randomly selects a word
 	void ChooseAWord();
 	//call the function to get the selected word
-	//string ReturnWord();
-
-
+	string ReturnWord();
 };
-
-
 #endif
-
