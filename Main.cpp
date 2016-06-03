@@ -7,7 +7,9 @@ using namespace std;
 
 int main()
 {
-	Game game();
+	Dictionary words;
+	Player cPlyr;
+	Game game(cPlyr, words);
 
 	return 0;
 }
