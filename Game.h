@@ -13,15 +13,15 @@ using namespace std;
 class Game
 {
 private:
-	int totalWrongGuesses;
-	Player player();
-	Dictionary dictionary();
-	char *word;
+	int wrongGuessesBeforeLoss;
+	int wordLength;
+	string word;
 
 public :
-	Game(int totalWrongGuesses); //constructor 
-	void Play(Player player, Dictionary dictionary, int totalWrongGuesses, char *word);
-	void winOrLoss(Player player, int totalWrongGuesses, char *word, Dictionary dictionary);
-	void resetGame(char *word);
+	Game(Player player, Dictionary dictionary); //constructor 
+	void getWordFromDictionary(Dictionary dictionary);
+	void play(Player player, Dictionary dictionary);
+	void winOrLoss(Player player);
+	void resetGame(Player player, Dictionary dictionary);
 };
 #endif

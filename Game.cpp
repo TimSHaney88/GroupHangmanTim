@@ -5,30 +5,54 @@
 
 using namespace std;
 
-Game::Game(int totalWrongGuesses)
+Game::Game(Player player, Dictionary dictionary)
 {
-	cout << "Welcome to hangman!(write the instructions)";
-	totalWrongGuesses = 3;
+	cout << "Welcome to haaangmaaan! The goal of this game is to guess a word by suggesting\n";
+	cout << "different letters. You have 3 chances to win!\n";
+	wrongGuessesBeforeLoss = 3;
+	getWordFromDictionary(dictionary);
+	cout << "Just so you know, your word has " << wordLength << " letters. GOOD LUCK!\n\n";
+	play(player, dictionary);
 }
 
-void Game::Play(Player player, Dictionary dictionary, int totalWrongGuesses, char *word)
+
+void Game::getWordFromDictionary(Dictionary dictionary)
+{
+	string fileName = "Dictionary.txt";
+	dictionary.ReadFromFile(fileName);
+	dictionary.ChooseAWord();
+
+	
+	word = dictionary.ReturnWord();
+	//cout << word << "\n";
+	wordLength = word.size();
+}
+
+void Game::play(Player player, Dictionary dictionary)
 {
 
 	char letter;
-
 	int correctLetters = 0;
-
-	string temp = dictionary.ReturnWord();
-	int wordLength = temp.size();
-
-	word = new char[wordLength + 1];
-	word[wordLength] = 0;
-	memcpy(word, temp.c_str(), wordLength);
-
-	while (player.GetNumOfWrongGuesses() < totalWrongGuesses && correctLetters != wordLength)
+	bool isGuessCorrect = false;
+	
+	char const *wordToChar = word.c_str();
+	char *guessedletters = new char[wordLength];
+	
+	for (int i = 0; i < wordLength; i++)
 	{
-		cout << "Guess a letter";
+		guessedletters[i] = '_';
+		//cout << guessedletters[i] << " ";
+	}
+
+	/*for (int i = 0; i <wordLength; i++)
+		cout << word[i];*/
+
+
+	while ((player.GetNumOfWrongGuesses() < wrongGuessesBeforeLoss) && (correctLetters != wordLength))
+	{
+		cout << "Guess a letter: ";
 		cin >> letter;
+
 
 		if (player.IsValid(letter) == true)
 		{
@@ -36,37 +60,63 @@ void Game::Play(Player player, Dictionary dictionary, int totalWrongGuesses, cha
 			{
 				if (letter == word[i])
 				{
-					cout << letter;
+					guessedletters[i] = letter;
 					correctLetters++;
+					isGuessCorrect = true;
 				}
-
-				else
-					i++;
 			}
+			
+			if (isGuessCorrect == false)
+			{
+				cout << "That letter is not in the word, try again!\n\n";
+				player.AddNewGuess(letter, isGuessCorrect);
+			}
+			else
+			{
+				cout << "You guessed a letter!\n";
+				player.AddNewGuess(letter, isGuessCorrect);
+			}
+			
+			for (int i = 0; i < wordLength; i++)
+			{
+				cout << guessedletters[i] << " ";
+			}
+
+			isGuessCorrect = false;
+						
 		}
+
+		cout << "\n\nLetters guessed: ";
+		player.GetListOfCharGuessed();
+		cout << "\n";
+		cout << "How many wrong guesses?: " << player.GetNumOfWrongGuesses() << "\n\n";
 	}
+	
+	winOrLoss(player);
+	string answer;
+	cout << "Would you like to play again? YES or NO ";
+	cin >> answer;
+	if (answer == "YES" || answer == "yes")
+		resetGame(player, dictionary);
 }
 
-void Game::winOrLoss(Player player, int totalWrongGuesses, char *word, Dictionary dictionary)
+void Game::winOrLoss(Player player)
 {
-	if (player.GetNumOfWrongGuesses() == totalWrongGuesses)
+	if (player.GetNumOfWrongGuesses() == wrongGuessesBeforeLoss)
 	{
-		cout << "YOU LOST\n" << "The word is " << dictionary.ReturnWord();
-		player.Reset();
-		resetGame(word);
+		cout << "I'm sorry, but YOU LOST :(\n" << "The word is " << word << "\n\n";
 	}
 
 	else
 	{
-		cout << "YOU WIN\n"<< "The word is " << dictionary.ReturnWord();
-		player.Reset();
-		resetGame(word);
+		cout << "CONGRATS, YOU WON!\n"<< "The word is " << word << "\n\n";
 	}
 
 }
 
-void Game::resetGame(char *word)
+void Game::resetGame(Player player, Dictionary dictionary)
 {
-	delete [] word;
-
+	player.Reset();
+	getWordFromDictionary(dictionary);
+	play(player, dictionary);
 }
