@@ -35,7 +35,6 @@ void Game::play(Player player, Dictionary dictionary)
 	int correctLetters = 0;
 	bool isGuessCorrect = false;
 	
-	char const *wordToChar = word.c_str();
 	char *guessedletters = new char[wordLength];
 	
 	for (int i = 0; i < wordLength; i++)
@@ -43,9 +42,6 @@ void Game::play(Player player, Dictionary dictionary)
 		guessedletters[i] = '_';
 		//cout << guessedletters[i] << " ";
 	}
-
-	/*for (int i = 0; i <wordLength; i++)
-		cout << word[i];*/
 
 
 	while ((player.GetNumOfWrongGuesses() < wrongGuessesBeforeLoss) && (correctLetters != wordLength))
