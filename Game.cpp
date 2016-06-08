@@ -60,14 +60,14 @@ void Game::play(Player player, Dictionary dictionary)
 	}
 
 	//loop to play the game
-	while ((player.GetNumOfWrongGuesses() < wrongGuessesBeforeLoss) && (correctLetters != wordLength))
+	while ((player.getNumOfWrongGuesses() < wrongGuessesBeforeLoss) && (correctLetters != wordLength))
 	{
 		//prompts the user to guess a letter 
 		cout << "Guess a letter: ";
 		cin >> letter;
 
 		//checks if the input from the user is a valid letter
-		if (player.IsValid(letter) == true)
+		if (player.isValid(letter) == true)
 		{
 			//loop to check if the letter is in the word
 			for (int i = 0; i < wordLength; i++)
@@ -89,14 +89,14 @@ void Game::play(Player player, Dictionary dictionary)
 				//lets the player know that the letter is not in the word
 				cout << "That letter is not in the word, try again!\n\n";
 				//calls the AddNewGuess function from player to increment the number of wrong guesses and total guesses by one
-				player.AddNewGuess(letter, isGuessCorrect);
+				player.addNewGuess(letter, isGuessCorrect);
 			}
 			else
 			{
 				//lets the player know that the letter is in the word
 				cout << "You guessed a letter!\n";
 				//calls the AddNewGuess function from player to increment the number of total guesses by one
-				player.AddNewGuess(letter, isGuessCorrect);
+				player.addNewGuess(letter, isGuessCorrect);
 			}
 			
 			//loop to display the guessedletters array so the player knows the letters guessed and get an idea of the word 
@@ -113,10 +113,10 @@ void Game::play(Player player, Dictionary dictionary)
 		
 		cout << "\n\nLetters guessed: ";
 		//calls the GetListOfCharGuessed funtion from player to display the list of all the letters guessed
-		player.GetListOfCharGuessed();
+		player.getListOfCharGuessed();
 		cout << "\n";
 		//calls the GetNumOfWrongGuesses from player to display the number of wrong guesses
-		cout << "How many wrong guesses?: " << player.GetNumOfWrongGuesses() << "\n\n";
+		cout << "How many wrong guesses?: " << player.getNumOfWrongGuesses() << "\n\n";
 	}
 	
 	//calls the function to check if the player loses or wins 
@@ -135,7 +135,7 @@ void Game::play(Player player, Dictionary dictionary)
 void Game::winOrLoss(Player player)
 {
 	//checks if the number of wrong guesses is equal to the total number of wrong guesses allowed by the game
-	if (player.GetNumOfWrongGuesses() == wrongGuessesBeforeLoss)
+	if (player.getNumOfWrongGuesses() == wrongGuessesBeforeLoss)
 	{
 		//lets the player know that he or she lost
 		cout << "I'm sorry, but YOU LOST :(\n" << "The word is " << word << "\n\n";
@@ -152,7 +152,7 @@ void Game::winOrLoss(Player player)
 void Game::resetGame(Player player, Dictionary dictionary)
 {
 	//calls the Reset function from player to reinitiate the variable from the player class
-	player.Reset();
+	player.reset();
 	//calls the function in order to choose a new word for the game
 	getWordFromDictionary(dictionary);
 	//calls the function to play the game again
