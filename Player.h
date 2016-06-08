@@ -11,26 +11,24 @@ public:
   Player();
 
   // Sets number of trials allowed for the player.
-  void SetNumOfTrials(int num_trials);
+  void setNumOfTrials(int num_trials);
 
   // Records the new letter guessed by the player.
-  void AddNewGuess(char letter, bool isGuessCorrect);
+  void addNewGuess(char letter, bool isGuessCorrect);
   // Verifies if the input letter is an alphabet or not.
-  bool IsValid(char letter);
+  bool isValid(char letter);
 
   // Returns number of wrong guesses.
-  int GetNumOfWrongGuesses();
+  int getNumOfWrongGuesses();
   // Returns total number of guesses (wrong+right).
-  int GetTotalNumOfGuesses();
+  int getTotalNumOfGuesses();
   // Returns the list of the characters guessed by the player.
-  vector<char> GetListOfCharGuessed();
+  vector<char> getListOfCharGuessed();
 
   // Sets all the variables to zero and clears the guessed list.
-  void Reset();
+  void reset();
   
 private:
-  // Stores total number of trials.
-  int num_trials;
   // Stores number of wrong guesses.
   int num_wrong_guesses;
   // Stores total number of guesses. 
