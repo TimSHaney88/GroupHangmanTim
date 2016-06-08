@@ -25,6 +25,9 @@ public:
   // Returns the list of the characters guessed by the player.
   vector<char> getListOfCharGuessed();
   void displayGuessedLetter();
+  //returns already true or false for if letter was already guessed
+  bool alreadyGuessed(char guessedLetter);
+
 
   // Sets all the variables to zero and clears the guessed list.
   void reset();

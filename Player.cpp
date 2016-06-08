@@ -36,7 +36,20 @@ void Player::displayGuessedLetter() {
 	{
 		cout << list_char_guessed[i] << " ";
 	}
+
 }
+bool Player::alreadyGuessed(char guessedLetter)
+{
+	for (int i = 0; i < list_char_guessed.size(); i++)
+	{
+		if (guessedLetter == list_char_guessed[i])
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
 
 void Player::reset() {
   num_wrong_guesses = 0;
