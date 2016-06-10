@@ -1,4 +1,4 @@
-
+// Hangman Game
 #include "Dictionary.h"
 #include "Player.h"
 #include "Game.h"
