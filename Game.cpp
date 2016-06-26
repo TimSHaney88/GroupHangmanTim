@@ -9,9 +9,9 @@ Game::Game(Player player, Dictionary dictionary)
 {
 	//welcomes the player
 	cout << "Welcome to haaangmaaan! The goal of this game is to guess a word by suggesting\n";
-	cout << "different letters. You have 3 chances to win!\n";
+	cout << "different letters. You have 8 chances to win!\n";
 	//initializes the variable
-	wrongGuessesBeforeLoss = 3;
+	wrongGuessesBeforeLoss = 8;
 	//calls the function to get the word from the dictionary
 	getWordFromDictionary(dictionary);
 	//welcoming continues
@@ -26,12 +26,12 @@ void Game::getWordFromDictionary(Dictionary dictionary)
 	//name of file
 	string fileName = "Dictionary.txt";
 	//calls the ReadFromFile funtion from dictionary in order to read the file
-	dictionary.ReadFromFile(fileName);
+	dictionary.readFromFile(fileName);
 	//calls the ChooseAWord function from dictionary in order to choose a word for the game
-	dictionary.ChooseAWord();
+	dictionary.chooseAWord();
 
 	//sets the string word equal to the word choosen by dictionary
-	word = dictionary.ReturnWord();
+	word = dictionary.returnWord();
 	//displays the word choosen in order to check if the game works
 	//cout << word << "\n";
 	//sets the int wordLenght variable equal to the number of letters in the word chosen
@@ -127,7 +127,7 @@ void Game::play(Player player, Dictionary dictionary)
 	cout << "Would you like to play again? YES or NO ";
 	cin >> answer;
 	//if the answer is yes the game resets and the game continues
-	if (answer == "YES" || answer == "yes")
+	if (answer == "YES" || answer == "yes" || answer == "y" || answer == "Y")
 		resetGame(player, dictionary);
 }
 
