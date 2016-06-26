@@ -18,10 +18,10 @@
     <ClInclude Include="..\..\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Dictionary.h">
+    <ClInclude Include="..\..\Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Game.h">
+    <ClInclude Include="..\..\Dictionary.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

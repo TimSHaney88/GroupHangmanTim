@@ -13,18 +13,23 @@ private:
 	//number of words in the document
 	int wordCount;
 	//keep all of the words from the file into the array
-	string wordArray[500];
-
-public:
+	string wordArray[1000];
+	string* ptr;
 	//word chosen for the game
 	string selectWord;
+
+public:
+	
 	//default constructor
 	Dictionary();
 	//read the file with the given name
-	void ReadFromFile(string fileName);
+	void readFromFile(string fileName);
 	//randomly selects a word
-	void ChooseAWord();
+	void chooseAWord();
 	//call the function to get the selected word
-	string ReturnWord();
+	 string returnWord();
+	 string* pointer();
 };
+
+
 #endif
