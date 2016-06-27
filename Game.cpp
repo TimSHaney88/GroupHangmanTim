@@ -1,4 +1,5 @@
 #include "Game.h"
+//#include "Player.cpp"
 #include <string>
 #include <iostream>
 #include <cstring>
@@ -103,6 +104,7 @@ void Game::play(Player player, Dictionary dictionary)
 			for (int i = 0; i < wordLength; i++)
 			{
 				cout << guessedletters[i] << " ";
+				
 			}
 
 			//sets the isGuessCorrect to false again 
@@ -147,6 +149,11 @@ void Game::winOrLoss(Player player)
 	}
 
 }
+
+/*void Game::getDisplayGuessedLetter(Player player)
+{
+	Player.displayGuessedLetter();
+}*/
 
 //this function resets the game
 void Game::resetGame(Player player, Dictionary dictionary)

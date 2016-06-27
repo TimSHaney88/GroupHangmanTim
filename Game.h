@@ -29,6 +29,8 @@ public :
 	void play(Player player, Dictionary dictionary);
 	//checks if the player loses or wins 
 	void winOrLoss(Player player);
+	//gets characters already guessed
+	//void getDisplayGuessedLetter(Player player);
 	//resets the game
 	void resetGame(Player player, Dictionary dictionary);
 };
