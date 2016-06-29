@@ -18,6 +18,7 @@ Game::Game(Player player, Dictionary dictionary)
 	cout << "Just so you know, your word has " << wordLength << " letters. GOOD LUCK!\n\n";
 	//calls the function to play the game
 	play(player, dictionary);
+	display_char_guessed = player.getListOfCharGuessed();
 }
 
 //funtion to get the word from the dictionary
@@ -56,9 +57,9 @@ void Game::play(Player player, Dictionary dictionary)
 	for (int i = 0; i < wordLength; i++)
 	{
 		guessedletters[i] = '_';
-		//cout << guessedletters[i] << " ";
+		cout << guessedletters[i] << " ";
 	}
-
+	cout << endl; 
 	//loop to play the game
 	while ((player.getNumOfWrongGuesses() < wrongGuessesBeforeLoss) && (correctLetters != wordLength))
 	{
@@ -90,6 +91,8 @@ void Game::play(Player player, Dictionary dictionary)
 				cout << "That letter is not in the word, try again!\n\n";
 				//calls the AddNewGuess function from player to increment the number of wrong guesses and total guesses by one
 				player.addNewGuess(letter, isGuessCorrect);
+				display_char_guessed = player.getListOfCharGuessed();
+
 			}
 			else
 			{
@@ -97,6 +100,7 @@ void Game::play(Player player, Dictionary dictionary)
 				cout << "You guessed a letter!\n";
 				//calls the AddNewGuess function from player to increment the number of total guesses by one
 				player.addNewGuess(letter, isGuessCorrect);
+				display_char_guessed = player.getListOfCharGuessed();
 			}
 			
 			//loop to display the guessedletters array so the player knows the letters guessed and get an idea of the word 
@@ -104,6 +108,7 @@ void Game::play(Player player, Dictionary dictionary)
 			{
 				cout << guessedletters[i] << " ";
 			}
+			
 
 			//sets the isGuessCorrect to false again 
 			isGuessCorrect = false;
@@ -112,6 +117,7 @@ void Game::play(Player player, Dictionary dictionary)
 
 		
 		cout << "\n\nLetters guessed: ";
+		getDisplayGuessedLetter(player);
 		//calls the GetListOfCharGuessed funtion from player to display the list of all the letters guessed
 		player.getListOfCharGuessed();
 		cout << "\n";
@@ -147,7 +153,13 @@ void Game::winOrLoss(Player player)
 	}
 
 }
-
+void Game::getDisplayGuessedLetter(Player player)
+{
+	for (int i = 0; i < display_char_guessed.size(); i++)
+	{
+		cout << display_char_guessed[i] << " ";
+	}
+}
 //this function resets the game
 void Game::resetGame(Player player, Dictionary dictionary)
 {
