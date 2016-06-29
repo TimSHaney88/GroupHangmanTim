@@ -19,6 +19,7 @@ private:
 	int wordLength;
 	//holds the word chosen
 	string word;
+	vector<char> display_char_guessed;
 
 public :
 	//initializes the game
@@ -29,8 +30,13 @@ public :
 	void play(Player player, Dictionary dictionary);
 	//checks if the player loses or wins 
 	void winOrLoss(Player player);
+<<<<<<< HEAD
 	//gets characters already guessed
 	//void getDisplayGuessedLetter(Player player);
+=======
+
+	void getDisplayGuessedLetter(Player player);
+>>>>>>> origin/master
 	//resets the game
 	void resetGame(Player player, Dictionary dictionary);
 };
