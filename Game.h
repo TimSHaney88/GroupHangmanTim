@@ -30,13 +30,11 @@ public :
 	void play(Player player, Dictionary dictionary);
 	//checks if the player loses or wins 
 	void winOrLoss(Player player);
-<<<<<<< HEAD
-	//gets characters already guessed
-	//void getDisplayGuessedLetter(Player player);
-=======
 
+	//gets characters already guessed
 	void getDisplayGuessedLetter(Player player);
->>>>>>> origin/master
+
+
 	//resets the game
 	void resetGame(Player player, Dictionary dictionary);
 };

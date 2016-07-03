@@ -155,14 +155,9 @@ void Game::winOrLoss(Player player)
 	}
 
 }
-<<<<<<< HEAD
 
-/*void Game::getDisplayGuessedLetter(Player player)
-{
-	Player.displayGuessedLetter();
-}*/
 
-=======
+
 void Game::getDisplayGuessedLetter(Player player)
 {
 	for (int i = 0; i < display_char_guessed.size(); i++)
@@ -170,7 +165,7 @@ void Game::getDisplayGuessedLetter(Player player)
 		cout << display_char_guessed[i] << " ";
 	}
 }
->>>>>>> origin/master
+
 //this function resets the game
 void Game::resetGame(Player player, Dictionary dictionary)
 {
