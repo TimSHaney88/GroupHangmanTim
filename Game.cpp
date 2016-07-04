@@ -79,10 +79,21 @@ void Game::play(Player player, Dictionary dictionary)
 				{
 					//changes the char underscore for the letter guesses
 					guessedletters[i] = letter;
-					//increments the variable correctLetters by one
-					correctLetters++;
-					//sets the isGuessCorrect variable equals to true
-					isGuessCorrect = true;
+					/*for (int i = 0; i < wordLength; i++)
+					{
+						if (guessedletters[i] == letter)
+						{
+							cout << "This letter is already guessed, please try again" << endl;
+							break;
+						}
+						else*/
+							//increments the variable correctLetters by one
+						//{
+							correctLetters++;
+							//sets the isGuessCorrect variable equals to true
+							isGuessCorrect = true;
+						//}
+					//}
 				}
 			}
 			//checks if the isGuessCorrect varible is equal to false
